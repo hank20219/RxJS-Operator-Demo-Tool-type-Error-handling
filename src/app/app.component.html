@@ -1,0 +1,21 @@
+<h1>{{ method }}</h1>
+<select style="margin: 15px; margin-right: 0;" [(ngModel)]="type">
+  <option value="tool" default>工具類型</option>
+  <option value="error">錯誤處理</option>
+</select>
+<select style="margin: 15px;" [(ngModel)]="method">
+  <option [value]="null" default>請選擇方法</option>
+  <ng-container *ngIf="type === 'tool'">
+    <option value="tap">tap</option>
+    <option value="toArray">toArray</option>
+    <option value="delay">delay</option>
+    <option value="delayWhen">delayWhen</option>
+  </ng-container>
+  <ng-container *ngIf="type === 'error'">
+    <option value="catchError">catchError</option>
+    <option value="retry">retry</option>
+    <option value="retryWhen">retryWhen</option>
+    <option value="finalize">finalize</option>
+  </ng-container>
+</select>
+<home [method]="method"></home>
